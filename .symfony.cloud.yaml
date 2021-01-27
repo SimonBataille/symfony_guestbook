@@ -4,6 +4,7 @@ type: php:7.4
 
 runtime:
     extensions:
+        - redis
         - apcu
         - mbstring
         - sodium
@@ -49,3 +50,4 @@ hooks:
 
 relationships:
     database: "db:postgresql"
+    redis: "rediscache:redis"
