@@ -47,6 +47,8 @@ class SpamChecker
             throw new \RuntimeException(sprintf('Unable to check for spam: %s (%s).', $content, $headers['x-akismet-debug-help'][0]));
         }
 
+        error_log();
+
         return 'true' === $content ? 1 : 0;
     }
 }

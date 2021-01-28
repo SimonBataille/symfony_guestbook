@@ -4,6 +4,7 @@ type: php:7.4
 
 runtime:
     extensions:
+        - amqp
         - redis
         - apcu
         - mbstring
@@ -52,3 +53,9 @@ hooks:
 relationships:
     database: "db:postgresql"
     redis: "rediscache:redis"
+    rabbitmq: "queue:rabbitmq"
+
+workers:
+    messages:
+        commands:
+            start: symfony console messenger:consume async -vv --time-limit=3600 --memory-limit=128M
